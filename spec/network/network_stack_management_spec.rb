@@ -16,7 +16,7 @@ RSpec.describe 'network stack instance management' do
 
   let(:required_resource_values) {
     {
-      'assume_role_arn' => ''
+      'assume_role_arn' => assume_role_arn
     }
   }
 

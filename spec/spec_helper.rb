@@ -20,3 +20,24 @@ end
 def statefile_folder
   Pathname.new(File.dirname(__FILE__) + '/../state').realpath.to_s
 end
+
+def assume_role_arn
+  configuration['assume_role_arn']
+end
+
+def configuration
+  @config ||= load_config
+end
+
+def load_config
+  default_config.merge(local_config)
+end
+
+def local_config
+  YAML.load_file(File.dirname(__FILE__) + '/../spin-local.yaml') || {}
+end
+
+def default_config
+  YAML.load_file(File.dirname(__FILE__) + '/../spin-default.yaml') || {}
+end
+
