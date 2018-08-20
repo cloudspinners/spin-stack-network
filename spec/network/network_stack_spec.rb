@@ -1,5 +1,5 @@
 
-RSpec.describe 'networking stack' do
+RSpec.describe 'network stack definition' do
 
   let(:stack_definition) {
     Cloudspin::Stack::Definition.from_file(terraform_source_folder + '/stack.yaml')
