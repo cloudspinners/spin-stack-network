@@ -1,0 +1,13 @@
+---
+vars:
+  component: "%{hiera('component')}"
+  estate: "%{hiera('estate')}"
+  deployment_identifier: "%{hiera('deployment_identifier')}"
+  base_dns_domain: "%{hiera('base_dns_domain')}"
+  region: "%{hiera('region')}"
+  aws_profile: "%{hiera('aws_profile')}"
+  assume_role_arn: "%{hiera('spin_stack_manager_role_arn')}"
+
+state:
+  type: s3
+  scope: deployment
