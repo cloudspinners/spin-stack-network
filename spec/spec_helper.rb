@@ -10,5 +10,13 @@ RSpec.configure do |config|
 end
 
 def terraform_source_folder
-  File.dirname(__FILE__) + '/../src'
+  Pathname.new(File.dirname(__FILE__) + '/../src').realpath.to_s
+end
+
+def working_folder
+  Pathname.new(File.dirname(__FILE__) + '/../work').realpath.to_s
+end
+
+def statefile_folder
+  Pathname.new(File.dirname(__FILE__) + '/../state').realpath.to_s
 end
