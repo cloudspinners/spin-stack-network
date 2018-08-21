@@ -1,1 +1,6 @@
 ---
+parameters:
+  deployment_identifier: my_env
+  component: my_component
+  estate: my_estate
+  base_dns_domain: my_domain

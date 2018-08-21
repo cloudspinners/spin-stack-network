@@ -9,35 +9,19 @@ RSpec.configure do |config|
   end
 end
 
+def path_of_project_file(filename)
+  Pathname.new(File.dirname(__FILE__) + '/../' + filename).realpath.to_s
+end
+
 def terraform_source_folder
-  Pathname.new(File.dirname(__FILE__) + '/../src').realpath.to_s
+  path_of_project_file('src')
 end
 
 def working_folder
-  Pathname.new(File.dirname(__FILE__) + '/../work').realpath.to_s
+  path_of_project_file('work')
 end
 
 def statefile_folder
-  Pathname.new(File.dirname(__FILE__) + '/../state').realpath.to_s
-end
-
-def assume_role_arn
-  configuration['assume_role_arn']
-end
-
-def configuration
-  @config ||= load_config
-end
-
-def load_config
-  default_config.merge(local_config)
-end
-
-def local_config
-  YAML.load_file(File.dirname(__FILE__) + '/../spin-local.yaml') || {}
-end
-
-def default_config
-  YAML.load_file(File.dirname(__FILE__) + '/../spin-default.yaml') || {}
+  path_of_project_file('state')
 end
 
