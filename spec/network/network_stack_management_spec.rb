@@ -5,7 +5,7 @@ RSpec.describe 'network stack instance management' do
     Cloudspin::Stack::Definition.from_file(terraform_source_folder + '/stack.yaml')
   }
 
-  let(:instance_parameter_values) {
+  let(:parameter_values) {
     {
       'deployment_identifier' => 'my_env',
       'component' => 'my_component',
@@ -14,7 +14,7 @@ RSpec.describe 'network stack instance management' do
     }
   }
 
-  let(:required_resource_values) {
+  let(:resource_values) {
     {
       'assume_role_arn' => assume_role_arn
     }
@@ -26,8 +26,8 @@ RSpec.describe 'network stack instance management' do
       backend_config: {},
       working_folder: working_folder,
       statefile_folder: statefile_folder,
-      instance_parameter_values: instance_parameter_values,
-      required_resource_values: required_resource_values
+      parameter_values: parameter_values,
+      resource_values: resource_values
     )
   }
 

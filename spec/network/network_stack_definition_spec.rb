@@ -10,7 +10,7 @@ RSpec.describe 'network stack definition' do
   end
 
   it 'has the instance parameter names defined in the yaml file' do
-    expect(stack_definition.instance_parameter_names).to contain_exactly(
+    expect(stack_definition.parameter_names).to contain_exactly(
       'deployment_identifier',
       'component',
       'estate',
@@ -19,7 +19,7 @@ RSpec.describe 'network stack definition' do
   end
 
   it 'has the required resource names defined in the yaml file' do
-    expect(stack_definition.required_resource_names).to contain_exactly(
+    expect(stack_definition.resource_names).to contain_exactly(
       'aws_profile',
       'assume_role_arn',
       'region',

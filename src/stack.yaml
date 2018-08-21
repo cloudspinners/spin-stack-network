@@ -1,11 +1,11 @@
 ---
-instance_parameter_names:
+parameter_names:
 - deployment_identifier
 - component
 - estate
 - base_dns_domain
 
-required_resource_names:
+resource_names:
 - aws_profile
 - assume_role_arn
 - region
