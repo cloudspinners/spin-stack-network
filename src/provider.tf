@@ -3,6 +3,6 @@ provider "aws" {
   profile = "${var.aws_profile}"
   assume_role {
     role_arn  = "${var.assume_role_arn}"
-    session_name = "session-${var.component}-${var.estate}"
+    session_name = "session-networking-${var.deployment_identifier}"
   }
 }

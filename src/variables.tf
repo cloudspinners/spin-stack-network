@@ -1,6 +1,4 @@
 variable "deployment_identifier" {}
-variable "component" {}
-variable "estate" {}
 variable "base_dns_domain" {}
 
 variable "aws_profile" { default = "default" }

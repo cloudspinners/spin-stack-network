@@ -1,8 +1,6 @@
 ---
 parameter_names:
 - deployment_identifier
-- component
-- estate
 - base_dns_domain
 
 resource_names:
