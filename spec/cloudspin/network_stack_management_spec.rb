@@ -7,6 +7,7 @@ RSpec.describe 'Cloudspin::Stack::Definition' do
 
   let(:stack_instance) {
     instance = Cloudspin::Stack::Instance.new(
+      id: 'network_stack_management_spec',
       stack_definition: stack_definition,
       backend_config: {},
       working_folder: working_folder,
