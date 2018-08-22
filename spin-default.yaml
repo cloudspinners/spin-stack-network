@@ -1,4 +1,3 @@
 ---
 parameters:
-  deployment_identifier: my_env
   base_dns_domain: my_domain

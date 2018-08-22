@@ -12,8 +12,6 @@ RSpec.describe 'network stack definition' do
   it 'has the instance parameter names defined in the yaml file' do
     expect(stack_definition.parameter_names).to contain_exactly(
       'deployment_identifier',
-      'component',
-      'estate',
       'base_dns_domain'
     )
   end
