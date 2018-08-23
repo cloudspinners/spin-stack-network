@@ -20,7 +20,7 @@ end
 desc 'Create, test, and destroy the stack'
 task :test => [
   :'stack:test-network:up',
-  :'stack:test-network:inspec'
-  # :'stack:test-network:down'
+  :'stack:test-network:inspec',
+  :'stack:test-network:down'
 ]
 
