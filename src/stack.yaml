@@ -1,4 +1,8 @@
 ---
+stack:
+  name: network
+  version: 0.0.1
+
 parameter_names:
 - deployment_identifier
 - base_dns_domain

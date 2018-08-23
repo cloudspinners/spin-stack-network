@@ -9,8 +9,12 @@
 
 # rspec failure tracking
 .rspec_status
+
 Gemfile.lock
-work
 spin-local.yaml
+
 bin
+work
 state
+build
+dist

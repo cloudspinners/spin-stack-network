@@ -3,6 +3,8 @@ require 'rspec/core/rake_task'
 require 'cloudspin/stack/rake'
 
 CLEAN.include('work')
+CLEAN.include('build')
+CLEAN.include('dist')
 CLOBBER.include('state')
 
 RSpec::Core::RakeTask.new(:spec)
