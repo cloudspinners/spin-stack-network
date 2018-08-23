@@ -2,9 +2,8 @@
 
 title 'vpc'
 
-deployment_identifier = attribute('deployment_identifier', default: 'unknown', description: 'Which deployment_identifier to inspect')
-component = attribute('component', description: 'Which component things should be tagged')
+stack_instance_id = attribute('stack_instance_id', description: 'Which stack to test')
 
 describe aws_vpc_list do
-  its('name') { should include "vpc-#{component}-#{deployment_identifier}" }
+  its('name') { should include "vpc-networking-#{stack_instance_id}" }
 end
