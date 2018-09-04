@@ -12,21 +12,24 @@ RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
 
 namespace :stack do
-  namespace 'test-network' do
-    stack = Cloudspin::Stack::Rake::StackTask.new(id: 'test-network').instance
+  stack = Cloudspin::Stack::Rake::StackTask.new(id: 'test-network').instance
 
-    Cloudspin::Stack::Rake::InspecTask.new(stack_instance: stack,
-                                           inspec_target: 'aws://eu-west-1/assume-spin_stack_manager-skeleton')
+  Cloudspin::Stack::Rake::InspecTask.new(stack_instance: stack,
+                                         inspec_target: 'aws://eu-west-1/assume-spin_stack_manager-skeleton')
 
-    Cloudspin::Stack::Rake::ArtefactTask.new(definition_folder: './src',
-                                             dist_folder: './dist')
-  end
+  Cloudspin::Stack::Rake::ArtefactTask.new(definition_folder: './src',
+                                           dist_folder: './dist')
 end
 
 desc 'Create, test, and destroy the stack'
 task :test => [
-  :'stack:test-network:up',
-  :'stack:test-network:inspec',
-  :'stack:test-network:down'
+  :'stack:up',
+  :'stack:inspec',
+  :'stack:down'
 ]
 
+namespace :pipeline do
+  Cloudspin::Stack::Rake::StackTask.new(id: 'pipeline',
+                                        definition_folder: '../spin-stack-codepipeline/src',
+                                        instance_folder: 'pipeline').instance
+end
