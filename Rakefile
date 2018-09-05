@@ -14,11 +14,11 @@ task :default => :spec
 include Cloudspin::Stack::Rake
 
 namespace :network do
-  stack = StackTask.new(id: 'test-network').instance
-
-  InspecTask.new(stack_instance: stack,
-                 inspec_target: 'aws://eu-west-1/assume-spin_stack_manager-skeleton')
+  @stack = StackTask.new(id: 'test-network').instance
 end
+
+InspecTask.new(stack_instance: @stack,
+               inspec_target: 'aws://eu-west-1/assume-spin_stack_manager-skeleton')
 
 ArtefactTask.new(definition_folder: './src',
                  dist_folder: './dist')
@@ -26,7 +26,7 @@ ArtefactTask.new(definition_folder: './src',
 desc 'Create, test, and destroy the stack'
 task :test => [
   :'network:up',
-  :'network:inspec',
+  :'inspec',
   :'network:down'
 ]
 
