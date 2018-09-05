@@ -7,7 +7,7 @@ RSpec.describe 'Cloudspin::Stack::Definition' do
     @estate = 'spec_estate'
     @base_dns_domain = 'spec_dns_domain'
 
-    stack_definition = Cloudspin::Stack::Definition.from_file(terraform_source_folder + '/stack.yaml')
+    stack_definition = Cloudspin::Stack::Definition.from_file(terraform_source_folder + '/stack-definition.yaml')
 
     instance = Cloudspin::Stack::Instance.new(
       stack_definition: stack_definition,

@@ -2,7 +2,7 @@
 RSpec.describe 'Cloudspin::Stack::Definition' do
 
   let(:stack_definition) {
-    Cloudspin::Stack::Definition.from_file(terraform_source_folder + '/stack.yaml')
+    Cloudspin::Stack::Definition.from_file(terraform_source_folder + '/stack-definition.yaml')
   }
 
   let(:stack_instance) {
