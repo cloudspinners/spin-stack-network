@@ -11,14 +11,16 @@ CLOBBER.include('state')
 RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
 
+include Cloudspin::Stack::Rake
+
 namespace :stack do
-  stack = Cloudspin::Stack::Rake::StackTask.new(id: 'test-network').instance
+  stack = StackTask.new(id: 'test-network').instance
 
-  Cloudspin::Stack::Rake::InspecTask.new(stack_instance: stack,
-                                         inspec_target: 'aws://eu-west-1/assume-spin_stack_manager-skeleton')
+  InspecTask.new(stack_instance: stack,
+                 inspec_target: 'aws://eu-west-1/assume-spin_stack_manager-skeleton')
 
-  Cloudspin::Stack::Rake::ArtefactTask.new(definition_folder: './src',
-                                           dist_folder: './dist')
+  ArtefactTask.new(definition_folder: './src',
+                   dist_folder: './dist')
 end
 
 desc 'Create, test, and destroy the stack'
@@ -29,7 +31,7 @@ task :test => [
 ]
 
 namespace :pipeline do
-  Cloudspin::Stack::Rake::StackTask.new(id: 'pipeline',
-                                        definition_folder: '../spin-stack-codepipeline/src',
-                                        instance_folder: 'pipeline').instance
+  StackTask.new(id: 'pipeline',
+                definition_folder: '../spin-stack-codepipeline/src',
+                instance_folder: 'pipeline').instance
 end
