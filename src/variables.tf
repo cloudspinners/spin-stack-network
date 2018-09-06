@@ -1,4 +1,4 @@
-variable "deployment_identifier" {}
+variable "instance_identifier" {}
 variable "base_dns_domain" {}
 
 variable "aws_profile" { default = "default" }

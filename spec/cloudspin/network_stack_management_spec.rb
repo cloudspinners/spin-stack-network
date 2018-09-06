@@ -13,9 +13,9 @@ RSpec.describe 'Cloudspin::Stack::Definition' do
       working_folder: working_folder,
       statefile_folder: statefile_folder
     )
-    instance.add_config_from_yaml('spin-default.yaml')
-    instance.add_config_from_yaml('spin-local.yaml')
-    instance.add_parameter_values({ :deployment_identifier => 'network_stack_management_spec' })
+    instance.add_config_from_yaml('stack-instance-defaults.yaml')
+    instance.add_config_from_yaml('stack-instance-local.yaml')
+    instance.add_parameter_values({ :instance_identifier => 'network_stack_management_spec' })
     instance
   }
 

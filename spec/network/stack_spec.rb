@@ -2,7 +2,7 @@
 RSpec.describe 'Cloudspin::Stack::Definition' do
 
   before(:all) do
-    @deployment_identifier = 'spec_env'
+    @instance_identifier = 'spec_env'
     @component = 'spec_component'
     @estate = 'spec_estate'
     @base_dns_domain = 'spec_dns_domain'
@@ -18,7 +18,7 @@ RSpec.describe 'Cloudspin::Stack::Definition' do
     instance.add_config_from_yaml('spin-local.yaml')
     instance.add_parameter_values(
       {
-        :deployment_identifier => @deployment_identifier,
+        :instance_identifier => @instance_identifier,
         :component => @component,
         :estate => @estate,
         :base_dns_domain => @base_dns_domain

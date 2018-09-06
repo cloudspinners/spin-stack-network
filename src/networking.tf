@@ -7,7 +7,7 @@ module "base-network" {
   availability_zones        = "${var.availability_zones}"
   
   component                 = "networking"
-  deployment_identifier     = "${var.deployment_identifier}"
+  deployment_identifier     = "${var.instance_identifier}"
   
   include_lifecycle_events  = "no"
   private_zone_id           = "${module.dns-zones.private_zone_id}"
