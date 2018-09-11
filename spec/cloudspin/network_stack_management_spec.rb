@@ -6,17 +6,14 @@ RSpec.describe 'Cloudspin::Stack::Definition' do
   }
 
   let(:stack_instance) {
-    instance = Cloudspin::Stack::Instance.new(
-      id: 'network_stack_management_spec',
+    Cloudspin::Stack::Instance.from_files(
+      'stack-instance-defaults.yaml',
+      'stack-instance-local.yaml',
       stack_definition: stack_definition,
       backend_config: {},
       working_folder: working_folder,
       statefile_folder: statefile_folder
     )
-    instance.add_config_from_yaml('stack-instance-defaults.yaml')
-    instance.add_config_from_yaml('stack-instance-local.yaml')
-    instance.add_parameter_values({ :instance_identifier => 'network_stack_management_spec' })
-    instance
   }
 
   describe 'plan command' do

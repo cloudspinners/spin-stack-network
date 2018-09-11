@@ -17,8 +17,7 @@ namespace :network do
   @stack = StackTask.new(id: 'test-network').instance
 end
 
-InspecTask.new(stack_instance: @stack,
-               inspec_target: 'aws://eu-west-1/assume-spin_stack_manager-skeleton')
+InspecTask.new(stack_instance: @stack)
 
 ArtefactTask.new(definition_folder: './src',
                  dist_folder: './dist')

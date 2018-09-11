@@ -6,23 +6,7 @@ RSpec.describe 'network stack definition' do
   }
 
   it 'has the right terraform source path' do
-    expect(stack_definition.terraform_source_path).to eq(terraform_source_folder)
-  end
-
-  it 'has the instance parameter names defined in the yaml file' do
-    expect(stack_definition.parameter_names).to contain_exactly(
-      'instance_identifier',
-      'base_dns_domain'
-    )
-  end
-
-  it 'has the required resource names defined in the yaml file' do
-    expect(stack_definition.resource_names).to contain_exactly(
-      'aws_profile',
-      'assume_role_arn',
-      'region',
-      'availability_zones'
-    )
+    expect(stack_definition.source_path).to eq(terraform_source_folder)
   end
 
 end
