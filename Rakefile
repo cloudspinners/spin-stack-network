@@ -20,8 +20,8 @@ include Cloudspin::Stack::Rake
   end
 }
 
-# ArtefactTask.new(definition_folder: './src',
-#                  dist_folder: './dist')
+ArtefactTask.new(definition_folder: './src',
+                 dist_folder: './dist')
 
 desc 'Dry run for the sandbox instance'
 task :dry => [ 'sandbox:dry' ]
