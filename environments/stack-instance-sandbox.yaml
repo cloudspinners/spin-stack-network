@@ -1,0 +1,4 @@
+instance:
+  group: sandbox
+parameters:
+  environment_name: sandbox

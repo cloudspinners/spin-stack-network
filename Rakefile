@@ -13,24 +13,28 @@ task :default => :spec
 
 include Cloudspin::Stack::Rake
 
-namespace :network do
-  @stack = StackTask.new(id: 'test-network').instance
-end
+['sandbox', 'test', 'staging'].each { |environment|
+  namespace "#{environment}" do
+    stack = StackTask.new(environment).instance
+    InspecTask.new(stack_instance: stack)
+  end
+}
 
-InspecTask.new(stack_instance: @stack)
+# ArtefactTask.new(definition_folder: './src',
+#                  dist_folder: './dist')
 
-ArtefactTask.new(definition_folder: './src',
-                 dist_folder: './dist')
+desc 'Dry run for the sandbox instance'
+task :dry => [ 'sandbox:dry' ]
+desc 'Plan the sandbox instance'
+task :plan => [ 'sandbox:plan' ]
+desc 'Create or update the sandbox instance'
+task :up => [ 'sandbox:up' ]
+desc 'Destroy the sandbox instance'
+task :down => [ 'sandbox:down' ]
+desc 'Test the sandbox instance'
+task :test => [ 'sandbox:inspec' ]
 
-desc 'Create, test, and destroy the stack'
-task :test => [
-  :'network:up',
-  :'inspec',
-  :'network:down'
-]
-
-namespace :pipeline do
-  StackTask.new(id: 'pipeline',
-                definition_folder: '../spin-stack-codepipeline/src',
-                instance_folder: 'pipeline').instance
-end
+# namespace :pipeline do
+#   StackTask.new(definition_folder: '../spin-stack-codepipeline/src',
+#                 instance_folder: 'pipeline').instance
+# end

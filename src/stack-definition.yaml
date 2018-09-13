@@ -2,13 +2,3 @@
 stack:
   name: network
   version: 0.0.1
-
-parameter_names:
-- instance_identifier
-- base_dns_domain
-
-resource_names:
-- aws_profile
-- assume_role_arn
-- region
-- availability_zones

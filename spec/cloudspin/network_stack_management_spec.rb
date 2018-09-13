@@ -10,9 +10,8 @@ RSpec.describe 'Cloudspin::Stack::Definition' do
       'stack-instance-defaults.yaml',
       'stack-instance-local.yaml',
       stack_definition: stack_definition,
-      backend_config: {},
-      working_folder: working_folder,
-      statefile_folder: statefile_folder
+      base_working_folder: working_folder,
+      base_statefile_folder: statefile_folder
     )
   }
 

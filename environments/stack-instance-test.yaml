@@ -1,0 +1,4 @@
+instance:
+  group: test
+parameters:
+  environment_name: test
