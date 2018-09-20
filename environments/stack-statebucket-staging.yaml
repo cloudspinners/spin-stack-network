@@ -1,0 +1,5 @@
+instance:
+  group: staging
+parameters:
+  environment_name: staging
+  bucket_base_name: staging-network-statebucket

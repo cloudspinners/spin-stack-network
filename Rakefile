@@ -15,8 +15,24 @@ include Cloudspin::Stack::Rake
 
 ['sandbox', 'test', 'staging'].each { |environment|
   namespace "#{environment}" do
-    stack = StackTask.new(environment).instance
-    InspecTask.new(stack_instance: stack)
+
+    namespace :network do
+      network_stack = StackTask.new(environment).instance
+      InspecTask.new(stack_instance: network_stack)
+    end
+
+    namespace :statebucket do
+      StackTask.new(
+          environment,
+          definition_folder: '../spin-stack-s3bucket/src',
+          configuration_files: [
+            './stack-statebucket-defaults.yaml',
+            './stack-statebucket-local.yaml',
+            "environments/stack-statebucket-#{environment}.yaml"
+          ]
+      ).instance
+    end
+
   end
 }
 
@@ -24,17 +40,12 @@ ArtefactTask.new(definition_folder: './src',
                  dist_folder: './dist')
 
 desc 'Dry run for the sandbox instance'
-task :dry => [ 'sandbox:dry' ]
+task :dry => [ 'sandbox:network:dry' ]
 desc 'Plan the sandbox instance'
-task :plan => [ 'sandbox:plan' ]
+task :plan => [ 'sandbox:network:plan' ]
 desc 'Create or update the sandbox instance'
-task :up => [ 'sandbox:up' ]
+task :up => [ 'sandbox:network:up' ]
 desc 'Destroy the sandbox instance'
-task :down => [ 'sandbox:down' ]
+task :down => [ 'sandbox:network:down' ]
 desc 'Test the sandbox instance'
-task :test => [ 'sandbox:inspec' ]
-
-# namespace :pipeline do
-#   StackTask.new(definition_folder: '../spin-stack-codepipeline/src',
-#                 instance_folder: 'pipeline').instance
-# end
+task :test => [ 'sandbox:network:inspec' ]
