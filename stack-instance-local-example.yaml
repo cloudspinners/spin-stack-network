@@ -1,0 +1,5 @@
+---
+resources:
+  aws_profile: profile from ~/.aws/credentials with your credentials
+  assume_role_profile: profile from ~/.aws/config that lets the aws_profile assume the assume_role_arn
+  assume_role_arn: arn:aws:iam::XXXXXXXXXXXX:role/ROLE_NAME
