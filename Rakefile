@@ -6,6 +6,11 @@ require 'cloudspin/stack/artefact'
 CLEAN.include('work')
 CLEAN.include('build')
 CLEAN.include('dist')
+CLEAN.include(
+  Dir['state/**/*'].
+    select { |d| File.directory? d }.
+    select { |d| (Dir.entries(d) - %w[ . .. ]).empty? }
+)
 CLOBBER.include('state')
 
 RSpec::Core::RakeTask.new(:spec)
