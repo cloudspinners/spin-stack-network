@@ -1,5 +1,0 @@
-instance:
-  group: test
-parameters:
-  environment_name: test
-  bucket_base_name: test-network-statebucket

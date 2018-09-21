@@ -1,5 +1,0 @@
-instance:
-  group: sandbox
-parameters:
-  environment_name: sandbox
-  bucket_base_name: sandbox-network-statebucket
