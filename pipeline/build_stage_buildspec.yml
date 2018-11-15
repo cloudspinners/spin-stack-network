@@ -16,15 +16,15 @@ phases:
       - apt-get update
       - apt-get install -y tree
       - tree .
-      - bundle update
 
   build:
     commands:
-      - rake inspec
+      - bundle update
+      - rake build package
 
   post_build:
     commands:
-      - rake build package
+      - echo No post-build commands
 
 artifacts:
   files:
