@@ -19,3 +19,7 @@ state
 build
 dist
 *-local.yaml
+
+.terraform
+.cloudspin
+_cloudspin_created_backend.tf

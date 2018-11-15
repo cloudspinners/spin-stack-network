@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gem 'cloudspin-stack'
+gem 'cloudspin-stack-rake'
+gem 'inspec', '~>2.3'

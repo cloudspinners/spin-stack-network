@@ -1,0 +1,12 @@
+---
+stack:
+  name: network_delivery
+  definition_location: 'https://github.com/cloudspinners/spin-stack-codepipeline/archive/master.zip'
+
+parameters:
+  stack_name: spin-stack-network
+  instance_identifier: cloudspin_delivery
+  github_owner: cloudspinners
+  github_repo: spin-stack-network
+  github_branch: master
+  repo_bucket_name: _OVERRIDE_THIS_

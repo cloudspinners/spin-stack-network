@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+      - unzip /tmp/terraform.zip -d /tmp
+      - mkdir -p ~/bin
+      - mv /tmp/terraform ~/bin
+      - chmod 0755 ~/bin/terraform
+      - export PATH="~/bin:$PATH"
+      - gem install bundler -v 1.17.1
+
+  pre_build:
+    commands:
+      - apt-get update
+      - apt-get install -y tree
+      - tree .
+      - bundle update
+
+  build:
+    commands:
+      - rake inspec
+
+  post_build:
+    commands:
+      - rake build package
+
+artifacts:
+  files:
+    - dist/*.tgz
+    - pipeline/*_buildspec.yml
+
