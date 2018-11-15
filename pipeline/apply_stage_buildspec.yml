@@ -21,8 +21,10 @@ phases:
 
   build:
     commands:
-      - rake dry
-      - rake up
+      - rake apply:dry
+      - rake apply:plan
+      - rake apply:up
+      - rake apply:test
 
   post_build:
     commands:

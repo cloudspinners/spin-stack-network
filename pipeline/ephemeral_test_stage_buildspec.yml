@@ -21,10 +21,11 @@ phases:
 
   build:
     commands:
-      - rake dry
-      - rake up
-      - rake test
+      - rake ephemeral:dry
+      - rake ephemeral:plan
+      - rake ephemeral:up
+      - rake ephemeral:test
 
   post_build:
     commands:
-      - rake down
+      - rake ephemeral:down

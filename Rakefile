@@ -17,3 +17,10 @@ ArtefactTask.new(definition_folder: './src',
 
 task :default => :dry
 task :test => :inspec
+
+['ephemeral', 'apply'].each { |environment|
+  namespace "#{environment}" do
+    stack = StackTask.new(environment).instance
+    InspecTask.new(stack_instance: stack)
+  end
+}
