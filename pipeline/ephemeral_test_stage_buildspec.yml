@@ -1,14 +1,18 @@
 version: 0.2
 
+# env:
+#   variables:
+#     PATH: "/usr/local/bin:/usr/bin:/usr/sbin"
+
 phases:
   install:
     commands:
+      - echo "PATH=${PATH}"
       - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
       - unzip /tmp/terraform.zip -d /tmp
-      - mkdir -p ~/bin
-      - mv /tmp/terraform ~/bin
-      - chmod 0755 ~/bin/terraform
-      - export PATH="~/bin:$PATH"
+      - mkdir -p /usr/local/bin
+      - mv /tmp/terraform /usr/local/bin
+      - chmod 0755 /usr/local/bin/terraform
       - gem install bundler -v 1.17.1
       - tar xzvf dist/*.tgz
 
