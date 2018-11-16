@@ -24,7 +24,7 @@ phases:
       - rake apply:dry
       - rake apply:plan
       - rake apply:up
-      - rake apply:test
+      - rake apply:inspec
 
   post_build:
     commands:
