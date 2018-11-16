@@ -1,0 +1,11 @@
+---
+terraform_backend:
+  bucket: statebucket-cloudspin-examples-084751902934
+  region: eu-west-1
+  encrypt: true
+
+instance:
+  group: apply_stage
+
+parameters:
+  environment_name: apply_stage
